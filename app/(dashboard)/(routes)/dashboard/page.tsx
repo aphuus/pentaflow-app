@@ -1,7 +1,7 @@
 export default function DashboardPage() {
   return (
-    <div>
-      <div>Dashboard Page (Protected)</div>
+    <div className="px-[5%]">
+      <p>Dashboard Page (Protected)</p>
     </div>
   );
 }
