@@ -64,10 +64,10 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="space-y-4 py-[5%] flex flex-col h-full bg-gray-900 text-white">
+    <div className="space-y-4 py-[5%] flex flex-col h-full bg-gray-900 text-white border-0">
       <div className="px-3 py-2 flex-1">
         <Link href="/dashboard" className=" flex items-center mb-14">
-          <div className="relative w-32 h-full mr-4">
+          <div className="relative w-36 h-full mr-4 px-3">
             <Image width={643.55} height={135.68} alt="pentaflow logo" src="/logo.svg" />
           </div>
         </Link>
