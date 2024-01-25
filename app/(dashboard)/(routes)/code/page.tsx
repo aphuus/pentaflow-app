@@ -128,9 +128,7 @@ const CodePage = () => {
                         <pre {...props} />
                       </div>
                     ),
-                    code: ({ node, ...props }) => (
-                      <code {...props} className="text-black rounded p-1" />
-                    ),
+                    code: ({ node, ...props }) => <code {...props} className=" rounded p-1" />,
                     p: ({ node, ...props }) => <p {...props} className="text-md font-medium" />
                   }}
                   className="text-sm overflow-hidden leading-7"
