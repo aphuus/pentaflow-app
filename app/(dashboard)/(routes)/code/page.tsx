@@ -50,8 +50,6 @@ const CodePage = () => {
       const response = await axios.post('/api/code', { messages: newMessages });
       setMessages((current) => [...current, userMessage, response.data]);
 
-      console.log(messages);
-
       form.reset();
     } catch (error: any) {
       // TODO: Open Pro Modal
@@ -102,7 +100,7 @@ const CodePage = () => {
         </div>
         <div className="space-y-4 mt-4">
           {isLoading && (
-            <div className="p-8 rounded-lg w-full flex items-center justify-center bgmut¨">
+            <div className="p-8 rounded-lg w-full flex items-center justify-center">
               <Loader />
             </div>
           )}
