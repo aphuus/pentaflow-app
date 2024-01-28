@@ -54,7 +54,7 @@ const MusicPage = () => {
   return (
     <div>
       <Heading
-        title="Music Conversation"
+        title="Music Generation"
         description="Turn your prompt into audible music."
         icon={Music}
         iconColor="text-primary"

@@ -2,6 +2,8 @@ import { auth } from '@clerk/nextjs';
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
+import { increaseApiLimit, checkApiLimit } from '@/lib/api-limit';
+
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
@@ -30,6 +32,12 @@ export async function POST(req: Request) {
       return new NextResponse('Resolution is required', { status: 400 });
     }
 
+    const freeTrial = await checkApiLimit();
+
+    if (!freeTrial) {
+      return new NextResponse('Free Trial Limit Reached', { status: 403 });
+    }
+
     const response = await openai.images.generate({
       model: 'dall-e-2',
       prompt,
@@ -37,9 +45,11 @@ export async function POST(req: Request) {
       size: resolution
     });
 
+    await increaseApiLimit();
+
     return NextResponse.json(response.data);
   } catch (error) {
-    console.log('Image error: ', error);
+    console.log('Image Generation Error: ', error);
     return new NextResponse('Internal error', { status: 500 });
   }
 }
