@@ -55,7 +55,7 @@ const LandingContent = () => {
                   <p className="text-sm text-muted-foreground">{testimonial.title}</p>
                 </div>
               </CardTitle>
-              <CardContent className="pt-4 px-0">"{testimonial.quote}"</CardContent>
+              <CardContent className="pt-4 px-0">{`"${testimonial.quote}"`}</CardContent>
             </CardHeader>
           </Card>
         ))}
