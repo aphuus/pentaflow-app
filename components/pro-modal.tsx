@@ -3,6 +3,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { Check, Code, Image, MessageSquare, Music, VideoIcon, Zap } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 import { useProModal } from '@/hooks/use-pro-modal';
 import {
@@ -62,6 +63,7 @@ const ProModal = () => {
 
       window.location.href = response.data.url;
     } catch (error) {
+      toast.error('Something went wrong! Try  again!');
       console.log('[STRIPE_CLIENT_ERROR]: ', error);
     } finally {
       setLoading(false);
@@ -97,7 +99,13 @@ const ProModal = () => {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="mt-4">
-          <Button onClick={onSubscribe} size="lg" className="w-full" variant="premium">
+          <Button
+            disabled={loading}
+            onClick={onSubscribe}
+            size="lg"
+            className="w-full"
+            variant="premium"
+          >
             Upgrade
             <Zap className="w-4 h-4 ml-2 fill-white" />
           </Button>

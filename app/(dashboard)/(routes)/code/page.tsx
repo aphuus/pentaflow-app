@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import toast from 'react-hot-toast';
 
 import Heading from '@/components/heading';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
@@ -56,6 +57,8 @@ const CodePage = () => {
     } catch (error: any) {
       if (error?.response?.status === 403) {
         proModal.onOpen();
+      } else {
+        toast.error('Something went wrong!');
       }
     } finally {
       router.refresh();
